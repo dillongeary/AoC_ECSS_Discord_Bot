@@ -1,8 +1,10 @@
 import discord
 import requests
 import json
+import asyncio
 
 TOKEN = open(".token","r").read()
+ID = open(".guildid","r").read()
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -43,7 +45,7 @@ def generateLeaderboard():
 
 @client.event
 async def on_ready():
-    channel = client.get_channel(id=869302998453583916)
+    channel = client.get_channel(ID)
     message = await channel.send(generateLeaderboard())
     while True:
         await asyncio.sleep(900)
