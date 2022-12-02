@@ -45,7 +45,7 @@ def generateLeaderboard():
 
 @client.event
 async def on_ready():
-    channel = client.get_channel(ID)
+    channel = client.get_channel(int(ID))
     message = await channel.send(generateLeaderboard())
     while True:
         await asyncio.sleep(900)
